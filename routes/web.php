@@ -17,4 +17,10 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+
+Route::get('/toggle-dark-mode', function () {
+    session(['dark_mode' => !session('dark_mode', false)]);
+    return redirect()->back();
+});
+
 require __DIR__.'/auth.php';
